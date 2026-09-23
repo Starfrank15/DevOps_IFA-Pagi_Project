@@ -3,6 +3,10 @@ name: Super-Linter
 on:
   push:
 
+permissions:
+  contents: read
+  statuses: write
+
 jobs:
   super-lint:
     name: Lint code base
@@ -11,6 +15,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Run Super-Linter
         uses: super-linter/super-linter/slim@v7
